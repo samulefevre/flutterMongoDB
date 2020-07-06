@@ -34,10 +34,10 @@ var functions = {
                 user.comparePassword(req.body.password, function (err, isMatch) {
                     if(isMatch && !err) {
                         var token = jwt.encode(user, config.secret)
-                        res.json({sucess: true, token: token})
+                        res.json({success: true, token: token})
                     }
                     else {
-                        return res.status(403).send({sucess: false, msg: 'Authentication failed, wrong password.'})
+                        return res.status(403).send({success: false, msg: 'Authentication failed, wrong password.'})
                     }
                 })
             }
@@ -51,7 +51,7 @@ var functions = {
             var decodedToken = jwt.decode(token, config.secret)
             return res.json({success: true, message: 'Hello '+ decodedToken.name})
         } else {
-            return res.json({sucess: false, msg: 'No Headers.'})
+            return res.json({success: false, msg: 'No Headers.'})
         }
     }
 }
